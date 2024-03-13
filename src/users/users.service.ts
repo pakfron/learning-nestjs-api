@@ -12,15 +12,12 @@ export class UsersService {
     return this.repo.save(user);
   }
 
-  async findOne(id: number) {
+   async findOne(id: number) {
     // findOne with findOne
     const user = await this.repo.findOne({ where: { id } });
-    if (!user) {
-      console.log(user);
-      throw new NotFoundException('user not found');
-    }
-
-    return user;
+    
+    return user
+    
     //find user where id raw query
     // return this.repo.query(`SELECT * FROM "User" where id = ${id}`);
   }
