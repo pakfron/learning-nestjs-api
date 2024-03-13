@@ -16,14 +16,14 @@ export class UsersService {
 
   findOne(id:number) {
   // findOne with findOne
-  // this.repo.findOne({where:{id}})
+  return this.repo.findOne({where:{id}})
            //find user where id raw query
-    return this.repo.query(`SELECT * FROM "User" where id = ${id}`);
+    // return this.repo.query(`SELECT * FROM "User" where id = ${id}`);
   }
   find(email:string)  {
     //find 
-    // this.repo.find({where:{email}})
-    return this.repo.query(`SELECT * FROM "User" where email = ${email}`)
+    return this.repo.find({where:{email}})
+    // return this.repo.query(`SELECT * FROM "User" where email = ${email}`)
   }
 
  async update(id:number,attr: Partial<User>) {
@@ -36,5 +36,11 @@ export class UsersService {
     return this.repo.save(user)
 
   }
-  remove() {}
+  async remove(id:number) {
+    const user = await this.repo.findOne({where:{id}})
+    if (!user) {
+      throw new Error('user not found')
+    }
+    return this.repo.remove(user)
+  }
 }
