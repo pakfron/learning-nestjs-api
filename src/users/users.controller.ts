@@ -24,9 +24,8 @@ export class UsersController {
   
   @Post('/signup')
   createUser(@Body() body: CreateUserDto) {
-    this.usersService.create(body.email, body.password);
+    return this.usersService.create(body.email, body.password);
   }
-  // @UseInterceptors(Serialize(UserDto))
 
   @Get('/:id')
   async findUser(@Param('id') id: string) {

@@ -18,7 +18,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       password: '1234',
       database: 'test_nest',
       entities: [User,Report],
-      synchronize: true,
+      synchronize: false,
+      migrations:['migrations/*js'],
+      migrationsTableName: "migrations"
     }),
     UsersModule,
     ReportsModule,
