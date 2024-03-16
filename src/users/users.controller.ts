@@ -12,6 +12,7 @@ import {
   NotFoundException,
   Session,
   UseGuards,
+  UnauthorizedException,
   
 } from '@nestjs/common';
 import { CreateUserDto } from './dtos/create-user.dto';
@@ -91,7 +92,13 @@ export class UsersController {
   }
 
   @Patch('/:id')
-  updateUser(@Param('id') id: string, @Body() body: UpdateUserDto) {
+  updateUser(@CurrenUser() user:User,@Param('id') id: string, @Body() body: UpdateUserDto) {
+    if (!user) {
+      throw new NotFoundException('user not found');
+    }
+    if (user.id !== Number(id)) {
+      throw new UnauthorizedException()
+    }
     return this.usersService.update(parseInt(id), body);
   }
 }

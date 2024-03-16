@@ -3,8 +3,8 @@ POST http://localhost:3000/auth/signup
 Content-Type: application/json
 
 {
-    "email":"test@test.com",
-    "password":"12345"
+    "email":"test04@test.com",
+    "password":"Password1234"
 }
 
 ### Sign in
@@ -12,8 +12,8 @@ POST http://localhost:3000/auth/signin
 Content-Type: application/json
 
 {
-    "email":"test@test.com",
-    "password":"12345"
+     "email":"test04@test.com",
+    "password":"Password1234"
 }
 
 ### get the currently signed in user
@@ -32,11 +32,11 @@ GET http://localhost:3000/auth?email=asdsf@gmail.com
 DELETE  http://localhost:3000/auth/5
 
 ### Update user
-PATCH http://localhost:3000/auth/2
+PATCH http://localhost:3000/auth/3
 Content-Type: application/json
 
 {
-    "email":"bbb@bbsb.com"
+    "email":"bbb@dbbsb.com"
 }
 
 ###Set a color
